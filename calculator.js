@@ -3,49 +3,85 @@ const operators = Array.from(document.getElementsByClassName("operator"));
 const display = document.getElementById("display");
 const reset = document.getElementById("reset");
 const del = document.getElementById('del');
-let expression;
-let numbers=[];
-let result;
+//let expression;
+let numbers = [];
+//let result;
 let seperator;
 
 /****To display the number in the display section when the buttons are clicked ******/
 
 digits.forEach(accessButton);
 
-function accessButton(digit){
-    digit.addEventListener("click",function displayNumber(){
+function accessButton(digit) {
+    digit.addEventListener("click", function displayNumber() {
         display.innerHTML += digit.innerHTML;
     });
 }
 
+window.addEventListener("keydown", () => {
+    let key = event.key;
+
+    if (key === '1' || key === '2' || key === '3' || key === '4' 
+        || key === '5' || key === '6' || key === '7' || key === '8' 
+        || key === '9' || key === '0' || key === '.' || key === '+' 
+        || key === '-' || key === '*' || key === '/' || key === '=') {
+        display.innerHTML += key;
+    }
+
+    if(key === '='){
+        const expression = display.innerHTML.slice(1, length - 1); //getting rid of equal to sign
+            //result = math.evaluate(expression);
+            const func = new Function("return " + expression);
+            const result = func();
+            display.innerHTML += `<p>${result}</p>`;
+    }
+     if(key ==='Enter'){
+        let length = display.innerHTML.length;
+        const expression = display.innerHTML.slice(1,length); //getting rid of equal to sign
+            //result = math.evaluate(expression);
+            console.log(expression);
+            const func = new Function("return " + expression);
+            const result = func();
+            display.innerHTML += `<p>${result}</p>`;
+     }
+
+});
 /****To display the operator in the display section when the buttons are clicked ******/
 
 operators.forEach(accessOperator);
 
-function accessOperator(operator){
-    operator.addEventListener("click",function operatorFunction(){
-        display.innerHTML += operator.innerHTML;
-        
-        /**** perform the operator *****/
-        if(operator.id ==="add"){ 
-            seperator = "+";
+function accessOperator(operator) {
+    operator.addEventListener("click", function operatorFunction() {
+        if (operator.id === "multiply") {
+            display.innerHTML += "*";
+        } else {
+            display.innerHTML += operator.innerHTML;
         }
 
-        if(operator.id ==="subtract"){ 
-            seperator = "-";
-        }
-
-        if(operator.id ==="multiply"){ 
-            seperator = "x";
-        }
-
-        if(operator.id ==="divide"){ 
-            seperator = "/";
-        }
-
+        /*     
+             /**** perform the operator *****
+             if(operator.id ==="add"){ 
+                 seperator = "+";
+             }
+     
+             if(operator.id ==="subtract"){ 
+                 seperator = "-";
+             }
+     
+             
+     
+             if(operator.id ==="divide"){ 
+                 seperator = "/";
+             }
+     */
         /* Evaluation of the expression */
-        expression = display.innerHTML.slice(0,length-1); //getting rid of equal to sign
-        if(operator.id === "result"){
+
+        if (operator.id === "result") {
+            const expression = display.innerHTML.slice(1, length - 1); //getting rid of equal to sign
+            //result = math.evaluate(expression);
+            const func = new Function("return " + expression);
+            const result = func();
+            /*
             numbers = expression.split(seperator); // removing +, -, x, /, just getting array of all the numbers
 
             if(seperator === "+"){
@@ -60,47 +96,45 @@ function accessOperator(operator){
 
 
 
-            /*addition */
+            /*addition *
             function addition(result,num){
                 num = parseFloat(num);
                 return result + num;
             }
 
-            /*subtraction */
+            /*subtraction *
             function subtraction(result,num){
                 num = parseFloat(num);
                 return result - num;
             }
 
-            /*multiplication */
+            /*multiplication *
             function multiplication(result,num){
                 num = parseFloat(num);
                 return result * num;
             }
 
-            /*division */
+            /*division *
             function division(result,num){
                 num = parseFloat(num);
                 return result / num;
             }
-
+            */
             display.innerHTML += `<p>${result}</p>`;
         }
     });
 }
 
-
-
 /****** reset the display on clicking the reset button *******/
 
-reset.addEventListener("click",() => {
+reset.addEventListener("click", () => {
     display.innerHTML = "0";
 })
 
 
 /****** delete last character ********/
 
-del.addEventListener("click",() => {
+del.addEventListener("click", () => {
     let length = display.innerHTML.length;
-    display.innerHTML = display.innerHTML.slice(0,length-1);
+    display.innerHTML = display.innerHTML.slice(0, length - 1);
 });
