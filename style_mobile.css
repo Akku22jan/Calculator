@@ -1,0 +1,98 @@
+:root{
+    /****** theme 1 *******/
+    /* background colors */
+    --theme1mainbg : hsl(222, 26%, 31%);
+    --theme1keypadbg : hsl(223, 31%, 20%);
+    --theme1screenbg : hsl(224, 36%, 15%);
+    /* keys color */
+    --theme1keybg1 : hsl(225, 21%, 49%);
+    --theme1keyshadow1 : hsl(224, 28%, 35%);
+    --theme1keybg2 : hsl(6, 63%, 50%);
+    --theme1keyshadow2 : hsl(6, 70%, 34%);
+    --theme1keybg3 : hsl(30, 25%, 89%);
+    --theme1keyshadow3 : hsl(28, 16%, 65%);
+    /* text colors */
+    --text1 : hsl(221, 14%, 31%);
+    --text2 : hsl(0, 0%, 100%);
+    /* font size */
+    --fontsize: 32px;
+
+}
+
+body{
+    background-color: var(--theme1mainbg);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+#themesection{
+    display: flex;
+    flex: row nowrap;
+    color: var(--text2);
+}
+
+#themeselection{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+#theme{
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+#theme1{
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+#changetheme{
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-color: var(--theme1keypadbg);
+    grid-column-start: 2;
+    grid-column-end: 5;
+}
+
+#displaysection{
+    background-color: var(--theme1screenbg);
+    color: var(--text2);
+}
+
+#keypad{
+    background-color: var(--theme1keypadbg);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 0.5rem;
+    column-gap: 0.5rem;
+    justify-content: space-around;
+    padding: 1.5rem 2rem;
+}
+
+.numbers, .operator{
+    background-color: var(--theme1keybg3);
+    color: var(--text1);
+    font-size: var(--fontsize);
+}
+
+#del{
+    background-color: var(--theme1keybg1);
+    color: var(--text2);
+}
+
+#reset{
+    grid-column-start: 1 ;
+    grid-column-end: 3;
+    background-color: var(--theme1keybg1);
+    color: var(--text2);
+}
+
+#result{
+    grid-column-start: 3;
+    grid-column-end: 5;
+    font-size: var(--fontsize);
+    background-color: var(--theme1keybg2);
+    color: var(--text2);
+}
