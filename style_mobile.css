@@ -12,10 +12,68 @@
     --theme1keybg3 : hsl(30, 25%, 89%);
     --theme1keyshadow3 : hsl(28, 16%, 65%);
     /* text colors */
-    --text1 : hsl(221, 14%, 31%);
-    --text2 : hsl(0, 0%, 100%);
+    --text1theme1 : hsl(221, 14%, 31%);
+    --text2theme1 : hsl(0, 0%, 100%);
+    --text3theme1 : hsl(0, 0%, 100%);
+    --text4theme1 : hsl(0, 0%, 100%);
+
+    /****** theme 2 *****/
+    /* background colors */
+    --theme2mainbg : hsl(0, 0%, 90%);
+    --theme2keypadbg : hsl(0, 5%, 81%);
+    --theme2screenbg : hsl(0, 0%, 93%);
+    /* keys color */
+    --theme2keybg1 : hsl(185, 42%, 37%);
+    --theme2keyshadow1 : hsl(185, 58%, 25%);
+    --theme2keybg2 : hsl(25, 98%, 40%);
+    --theme2keyshadow2 : hsl(25, 99%, 27%);
+    --theme2keybg3 : hsl(45, 7%, 89%);
+    --theme2keyshadow3 : hsl(35, 11%, 61%);
+    /* text colors */
+    --text1theme2 : hsl(60, 10%, 19%);
+    --text2theme2 : hsl(0, 0%, 100%);
+    --text3theme2 : hsl(60, 10%, 19%);
+    --text4theme2 : hsl(0, 0%, 100%);;
+
+    /******** theme 3 ******/
+    /* background colors */
+    --theme3mainbg : hsl(268, 75%, 9%);
+    --theme3keypadbg : hsl(268, 71%, 12%);
+    --theme3screenbg : hsl(268, 71%, 12%);
+    /* keys color */
+    --theme3keybg1 : hsl(281, 89%, 26%);
+    --theme3keyshadow1 : hsl(285, 91%, 52%);
+    --theme3keybg2 : hsl(176, 100%, 44%);
+    --theme3keyshadow2 : hsl(177, 92%, 70%);
+    --theme3keybg3 : hsl(268, 47%, 21%);
+    --theme3keyshadow3 : hsl(290, 70%, 36%);
+    /* text colors */
+    --text1theme3 : hsl(52, 100%, 62%);
+    --text2theme3 : hsl(0, 0%, 100%);
+    --text3theme3 : hsl(52, 100%, 62%);
+    --text4theme3 : hsl(198, 20%, 13%);
+
     /* font size */
     --fontsize: 32px;
+
+
+    /******** for any theme  *********/
+    /* background colors */
+    --mainbg : var(--theme1mainbg);
+    --keypadbg : var(--theme1keypadbg);
+    --screenbg : var(--theme1screenbg);
+    /* keys color */
+    --keybg1 : var(--theme1keybg1);
+    --keyshadow1 : var(--theme1keyshadow1);
+    --keybg2 : var(--theme1keybg2);
+    --keyshadow2 : var(--theme1keyshadow2);
+    --keybg3 : var(--theme1keybg3);
+    --keyshadow3 : var(--theme1keyshadow3);
+    /* text colors */
+    --text1 : var(--text1theme1);
+    --text2 : var(--text2theme1);
+    --text3 : var(--text3theme1);
+    --text4 : var(--text4theme1);
 
 }
 
@@ -28,7 +86,7 @@
 }
 
 body{
-    background-color: var(--theme1mainbg);
+    background-color: var(--mainbg);
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
@@ -38,7 +96,7 @@ body{
 /************ theme section    *********/
 #themesection{
     display: flex;
-    color: var(--text2);
+    color: var(--text3);
     justify-content: space-between;
 }
 
@@ -81,7 +139,7 @@ body{
 #changetheme{
     grid-row-start: 2;
     grid-row-end: 3;
-    background-color: var(--theme1keypadbg);
+    background-color: var(--keypadbg);
     grid-column-start: 2;
     grid-column-end: 5;
     border-radius: 15px;
@@ -94,7 +152,7 @@ body{
 #changetheme button{
     border: none;
     outline: none;
-    background-color: var(--theme1keybg2);
+    background-color: var(--keybg2);
     border-radius: 50%;
     width: 19px;
     height: 19px;
@@ -107,8 +165,8 @@ body{
 /*************display section ****/
 
 #displaysection{
-    background-color: var(--theme1screenbg);
-    color: var(--text2);
+    background-color: var(--screenbg);
+    color: var(--text3);
     text-align: right;
     padding: 0.5rem 1rem;
     font-size: var(--fontsize);
@@ -119,7 +177,7 @@ body{
 /***** Keypad section *****/
 
 #keypad{
-    background-color: var(--theme1keypadbg);
+    background-color: var(--keypadbg);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     row-gap: 0.7rem;
@@ -136,44 +194,44 @@ body{
 }
 
 .numbers, .operator{
-    background-color: var(--theme1keybg3);
+    background-color: var(--keybg3);
     color: var(--text1);
     font-size: var(--fontsize);
-    box-shadow: 0px 2px 0px var(--theme1keyshadow3);
-    border-color: var(--theme1keybg3);
+    box-shadow: 0px 2px 0px var(--keyshadow3);
+    border-color: var(--keybg3);
     width: 90%;
 }
 
 .numbers:hover, .operator:hover{
-    background-color: var(--theme1keyshadow3);
+    background-color: var(--keyshadow3);
 }
 
 #del{
-    background-color: var(--theme1keybg1);
+    background-color: var(--keybg1);
     color: var(--text2);
     border-radius: 7px;
-    box-shadow: 0px 2px 0px var(--theme1keyshadow1);
+    box-shadow: 0px 2px 0px var(--keyshadow1);
     width: 90%;
-    border-color: var(--theme1keybg1);
+    border-color: var(--keybg1);
 }
 
 #reset{
     grid-column-start: 1 ;
     grid-column-end: 3;
-    background-color: var(--theme1keybg1);
+    background-color: var(--keybg1);
     color: var(--text2);
     width: 96%;
-    box-shadow: 0px 2px 0px var(--theme1keyshadow1);
-    border-color: var(--theme1keybg1);
+    box-shadow: 0px 2px 0px var(--keyshadow1);
+    border-color: var(--keybg1);
 }
 
 #result{
     grid-column-start: 3;
     grid-column-end: 5;
     font-size: var(--fontsize);
-    background-color: var(--theme1keybg2);
-    color: var(--text2);
+    background-color: var(--keybg2);
+    color: var(--text4);
     width: 96%;
-    box-shadow: 0px 2px 0px var(--theme1keyshadow2);
-    border-color: var(--theme1keybg2);
+    box-shadow: 0px 2px 0px var(--keyshadow2);
+    border-color: var(--keybg2);
 }
