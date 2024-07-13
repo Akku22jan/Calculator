@@ -93,6 +93,15 @@ body{
     padding: 1.4rem;
 }
 
+/****** all buttons ****/
+button{
+    outline: none;
+}
+button:hover{
+    cursor: pointer;
+    filter:saturate(0.7);
+}
+
 /************ theme section    *********/
 #themesection{
     display: flex;
@@ -156,7 +165,18 @@ body{
     border-radius: 50%;
     width: 19px;
     height: 19px;
+}
+
+#btn1{
     margin-left: 3px;
+}
+
+#btn2{
+    height: 18px;
+}
+
+#btn3{
+    margin-right: 3px;
 }
 
 #btn2, #btn3{
@@ -200,10 +220,6 @@ body{
     box-shadow: 0px 2px 0px var(--keyshadow3);
     border-color: var(--keybg3);
     width: 90%;
-}
-
-.numbers:hover, .operator:hover{
-    background-color: var(--keyshadow3);
 }
 
 #del{

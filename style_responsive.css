@@ -1,0 +1,143 @@
+/*320,375,425, 768, 1024, 1440, 2560*/
+
+@media only screen and (min-width: 425px) {
+    body{
+        gap: 1.2rem;
+        padding : 3rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #themeselection{
+        width:42.5%;
+    }
+
+    section{
+        width:90%;
+    }
+    
+}
+
+@media only screen and (min-width:600px) {
+    body{
+        gap: 1.5rem;
+        padding : 2rem 5rem;
+    }
+
+    section{
+        width:77%;
+    }
+
+    #themeselection{
+        width:40%;
+    }
+
+    #displaysection{
+        height: 80px;
+    }
+    
+}
+
+@media only screen and (min-width:768px) {
+    body{
+        gap: 1.5rem;
+        padding : 2rem 8rem;
+    }
+
+    #themeselection{
+        width:38.5%;
+    }
+
+    section{
+        width:74%;
+    }
+    
+}
+
+@media only screen and (min-width:992px) {
+    body{
+        gap: 2rem;
+        padding : 2rem 11rem;
+    }
+
+    section{
+        width:71%;
+    }
+
+    #themeselection{
+        width:35%;
+    }
+
+    #displaysection{
+        height: 90px;
+    }
+    
+}
+
+@media only screen and (min-width: 1024px){
+    body{
+        gap: 2rem;
+        padding : 2rem 14rem;
+    }
+
+    #themeselection{
+        width:34%;
+    }
+
+    section{
+        width:65%;
+    }
+    
+}
+
+@media only screen and (min-width: 1200px) {
+    body{
+        gap: 2rem;
+        padding : 2rem 17rem;
+    }
+
+    section{
+        width:63%;
+    }
+
+    #themeselection{
+        width:30%;
+    }
+
+    #displaysection{
+        height: 95px;
+    }
+    
+}
+
+@media only screen and (min-width: 1440px) {
+    body{
+        gap: 2rem;
+        padding : 2rem 20rem;
+    }
+
+    section{
+        width:60%;
+    }
+    
+}
+
+@media only screen and (min-width: 2560px) {
+    body{
+        gap: 2rem;
+        padding : 2rem 23rem;
+    }
+
+    section{
+        width:50%;
+    }
+
+    #themeselection{
+        width:25%;
+    }
+
+    #displaysection{
+        height: 100px;
+    }
+    
+}
