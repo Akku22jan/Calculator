@@ -1,0 +1,20 @@
+1. We want to display 0 in the beginning in the bottm line.
+2. We want two lines of display
+3. The top line is smaller in fontsize and has a faded color.
+4. Initially when = is pressed, no action just little animation on 0. it goes down then comes up.
+5. If anything else is pressed other than =, the top line should be visible with ans = 0
+6. If numbers are pressed, the initial 0 should be replaced. And the expression should start with that number in the bottom line.
+7. If any operator(+,-,*,/) is pressed, it should be appended to the initial 0. 0+, 0-, 0*, 0/ should be displayed in the bottom line.
+8. Del should always work only on the bottom line.
+9. When = is pressed, it should be visible only once. The expression moves to the top line eg 5+4=, the result is displayed in the bottom line.
+10. As soon as something is pressed, the top line would become ans = result.
+11. we should be able to use del or append the operator with the result in the bottom line. 
+12. If a number is pressed after the result, result is replaced with the number.
+13. After +, if -, * or / is pressed, + will be replaced with the respective operator in the expression.
+14. After +, if another + is pressed, nothing changes in the expression.
+15. Same thing for - as for +.
+16. After * sign, if + or / is pressed, then it is replaced. if * is pressed nothing happens. if - is pressed it is appended, also after *- together only a number will be displayed, nothing happens if you keep pressing any operator.
+17. same thing applies for /.
+18. I want that - can come after + as well. two -- can also come together and they should be combined to a +.
+
+Have their initial theme preference checked using `prefers-color-scheme` and have any additional changes saved in the browser
