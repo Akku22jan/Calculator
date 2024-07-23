@@ -1,39 +1,38 @@
 const digits = Array.from(document.getElementsByClassName("numbers"));
 const operators = Array.from(document.getElementsByClassName("operator"));
-const display = document.getElementById("display");
+const displayExpression = document.getElementById("displayexpression");
+const displayAns = document.getElementById("displayans");
 const reset = document.getElementById("reset");
 const del = document.getElementById('del');
+let expression = displayExpression.innerHTML;
+let result = 0;
 
 /********    Typing in the calculator through keys */
 window.addEventListener("keydown", () => {
     let key = event.key;
 
+    /***** what happens on pressing the number keys */
     if (key === '1' || key === '2' || key === '3' || key === '4' 
         || key === '5' || key === '6' || key === '7' || key === '8' 
-        || key === '9' || key === '0' || key === '.' || key === '+' 
-        || key === '-' || key === '*' || key === '/' || key === '=') {
-        display.innerHTML += key;
+        || key === '9' || key === '0') {
+            updateExpressionOnNumbers(key);
     }
 
-    if(key === '='){
-            const expression = display.innerHTML.slice(1, length - 1); //getting rid of equal to sign
-            const func = new Function("return " + expression);
-            const result = func();
-            display.innerHTML += `<p>${result}</p>`;
+    /**** what happens on pressing operators and decimal point */
+    if(key === '.' || key === '+' || key === '-' || key === '*' || key === '/'){
+        updateExpressionOnOperators(key);
+        
     }
-     if(key ==='Enter'){
-        let length = display.innerHTML.length;
-        const expression = display.innerHTML.slice(1,length); //getting rid of equal to sign
-            //result = math.evaluate(expression);
-            console.log(expression);
-            const func = new Function("return " + expression);
-            const result = func();
-            display.innerHTML += `<p>${result}</p>`;
-     }
+
+    /**** what happens on pressing = or enter */
+    if(key === '=' || key === 'Enter'){
+        evaluateExpression();
+        
+    }
+
      /*** delete the last character */
      if(key === 'Backspace'){
-        let length = display.innerHTML.length;
-        display.innerHTML = display.innerHTML.slice(0, length - 1);
+        delKey();
      }
 
 });
@@ -45,7 +44,12 @@ digits.forEach(accessButton);
 
 function accessButton(digit) {
     digit.addEventListener("click", function displayNumber() {
-        display.innerHTML += digit.innerHTML;
+        if(digit.innerHTML !=='.'){
+            updateExpressionOnNumbers(digit.innerHTML);
+
+        } else{
+            updateExpressionOnOperators(digit.innerHTML);
+        } 
     });
 }
 
@@ -55,19 +59,19 @@ operators.forEach(accessOperator);
 
 function accessOperator(operator) {
     operator.addEventListener("click", function operatorFunction() {
-        if (operator.id === "multiply") {
-            display.innerHTML += "*";
-        } else {
-            display.innerHTML += operator.innerHTML;
+        if(operator.id !== "result"){
+            if (operator.id === "multiply") {
+                updateExpressionOnOperators('*');
+            } else {
+                updateExpressionOnOperators(operator.innerHTML);
+            }
         }
+        
 
-        /* Evaluation of the expression */
+        /* Evaluation of the expression when = is clicked*/
 
-        if (operator.id === "result") {
-            const expression = display.innerHTML.slice(1, length - 1); //getting rid of equal to sign
-            const func = new Function("return " + expression);
-            const result = func();
-            display.innerHTML += `<p>${result}</p>`;
+        else {
+            evaluateExpression();
         }
     });
 }
@@ -75,13 +79,54 @@ function accessOperator(operator) {
 /****** reset the display on clicking the reset button *******/
 
 reset.addEventListener("click", () => {
-    display.innerHTML = "0";
+    displayExpression.innerHTML = "0";
+    displayAns.style.visibility = "hidden";
+    result = '0';
+    expression = '0';
 })
 
 
 /****** delete last character ********/
 
 del.addEventListener("click", () => {
-    let length = display.innerHTML.length;
-    display.innerHTML = display.innerHTML.slice(0, length - 1);
+    delKey();
 });
+
+
+function updateExpressionOnNumbers(keys){
+    if(expression === `${result}`){
+        expression = keys;
+        displayExpression.innerHTML = expression;
+        displayAns.style.visibility = 'visible';
+        displayAns.innerHTML = `ans = ${result}`;
+
+    } else{
+        expression += keys;
+        displayExpression.innerHTML = expression;
+    }
+}
+
+function updateExpressionOnOperators(keys){
+    expression += keys;
+        displayExpression.innerHTML = expression;
+        displayAns.style.visibility = 'visible';
+        displayAns.innerHTML = `ans = ${result}`;
+}
+
+function evaluateExpression(){
+        displayExpression.innerHTML += '=';
+        const func = new Function("return " + expression);
+        result = func();
+        displayAns.innerHTML = displayExpression.innerHTML;
+        displayExpression.innerHTML = result;
+        expression = `${result}`;
+}
+
+function delKey(){
+    displayAns.innerHTML = `ans = ${result}`;
+    let length = displayExpression.innerHTML.length;
+    displayExpression.innerHTML = displayExpression.innerHTML.slice(0, length - 1);
+    if(displayExpression.innerHTML === ""){
+        displayExpression.innerHTML = '0';
+    }
+}
