@@ -32,7 +32,7 @@ window.addEventListener("keydown", () => {
 
      /*** delete the last character */
      if(key === 'Backspace'){
-        delKey();
+        updateOnDelKey();
      }
 
 });
@@ -89,7 +89,7 @@ reset.addEventListener("click", () => {
 /****** delete last character ********/
 
 del.addEventListener("click", () => {
-    delKey();
+    updateOnDelKey();
 });
 
 
@@ -107,7 +107,15 @@ function updateExpressionOnNumbers(keys){
 }
 
 function updateExpressionOnOperators(keys){
-    expression += keys;
+        expression += keys;
+        expression = expression.replace(/\*\-[\*\/\+\-]/,'*-');
+        expression = expression.replace(/\/\-[\*\/\+\-]/,'/-');
+        expression = expression.replace(/[\+\*\-\/.]\*/ ,'*');
+        expression = expression.replace(/[\+\*\-\/.]\// ,'/');
+        expression = expression.replace(/[\+\*\-\/.]\+/ ,'+');
+        expression = expression.replace(/[\+.]\-/ ,'-');
+        expression = expression.replace(/\-\-/ ,'+');
+
         displayExpression.innerHTML = expression;
         displayAns.style.visibility = 'visible';
         displayAns.innerHTML = `ans = ${result}`;
@@ -122,11 +130,13 @@ function evaluateExpression(){
         expression = `${result}`;
 }
 
-function delKey(){
+function updateOnDelKey(){
     displayAns.innerHTML = `ans = ${result}`;
-    let length = displayExpression.innerHTML.length;
-    displayExpression.innerHTML = displayExpression.innerHTML.slice(0, length - 1);
+    let length = expression.length;
+    expression = expression.slice(0,length-1);
+    displayExpression.innerHTML = expression;
     if(displayExpression.innerHTML === ""){
         displayExpression.innerHTML = '0';
+        expression = '';
     }
 }
