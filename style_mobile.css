@@ -1,79 +1,28 @@
 :root{
     /****** theme 1 *******/
     /* background colors */
-    --theme1mainbg : hsl(222, 26%, 31%);
-    --theme1keypadbg : hsl(223, 31%, 20%);
-    --theme1screenbg : hsl(224, 36%, 15%);
+    --mainbg : hsl(222, 26%, 31%);
+    --keypadbg : hsl(223, 31%, 20%);
+    --screenbg : hsl(224, 36%, 15%);
     /* keys color */
-    --theme1keybg1 : hsl(225, 21%, 49%);
-    --theme1keyshadow1 : hsl(224, 28%, 35%);
-    --theme1keybg2 : hsl(6, 63%, 50%);
-    --theme1keyshadow2 : hsl(6, 70%, 34%);
-    --theme1keybg3 : hsl(30, 25%, 89%);
-    --theme1keyshadow3 : hsl(28, 16%, 65%);
+    --keybg1 : hsl(225, 21%, 49%);
+    --keyshadow1 : hsl(224, 28%, 35%);
+    --keybg2 : hsl(6, 63%, 50%);
+    --keyshadow2 : hsl(6, 70%, 34%);
+    --keybg3 : hsl(30, 25%, 89%);
+    --keyshadow3 : hsl(28, 16%, 65%);
+    /* keys hover */
+    --keybg1hover : hsl(224, 51%, 76%);
+    --keybg2hover : hsl(6, 93%, 67%);
+    --keybg3hover: hsl(0, 0%, 100%);
     /* text colors */
-    --text1theme1 : hsl(221, 14%, 31%);
-    --text2theme1 : hsl(0, 0%, 100%);
-    --text3theme1 : hsl(0, 0%, 100%);
-    --text4theme1 : hsl(0, 0%, 100%);
-
-    /****** theme 2 *****/
-    /* background colors */
-    --theme2mainbg : hsl(0, 0%, 90%);
-    --theme2keypadbg : hsl(0, 5%, 81%);
-    --theme2screenbg : hsl(0, 0%, 93%);
-    /* keys color */
-    --theme2keybg1 : hsl(185, 42%, 37%);
-    --theme2keyshadow1 : hsl(185, 58%, 25%);
-    --theme2keybg2 : hsl(25, 98%, 40%);
-    --theme2keyshadow2 : hsl(25, 99%, 27%);
-    --theme2keybg3 : hsl(45, 7%, 89%);
-    --theme2keyshadow3 : hsl(35, 11%, 61%);
-    /* text colors */
-    --text1theme2 : hsl(60, 10%, 19%);
-    --text2theme2 : hsl(0, 0%, 100%);
-    --text3theme2 : hsl(60, 10%, 19%);
-    --text4theme2 : hsl(0, 0%, 100%);;
-
-    /******** theme 3 ******/
-    /* background colors */
-    --theme3mainbg : hsl(268, 75%, 9%);
-    --theme3keypadbg : hsl(268, 71%, 12%);
-    --theme3screenbg : hsl(268, 71%, 12%);
-    /* keys color */
-    --theme3keybg1 : hsl(281, 89%, 26%);
-    --theme3keyshadow1 : hsl(285, 91%, 52%);
-    --theme3keybg2 : hsl(176, 100%, 44%);
-    --theme3keyshadow2 : hsl(177, 92%, 70%);
-    --theme3keybg3 : hsl(268, 47%, 21%);
-    --theme3keyshadow3 : hsl(290, 70%, 36%);
-    /* text colors */
-    --text1theme3 : hsl(52, 100%, 62%);
-    --text2theme3 : hsl(0, 0%, 100%);
-    --text3theme3 : hsl(52, 100%, 62%);
-    --text4theme3 : hsl(198, 20%, 13%);
+    --text1 : hsl(221, 14%, 31%);
+    --text2 : hsl(0, 0%, 100%);
+    --text3 : hsl(0, 0%, 100%);
+    --text4 : hsl(0, 0%, 100%);
 
     /* font size */
     --fontsize: 32px;
-
-
-    /******** for any theme  *********/
-    /* background colors */
-    --mainbg : var(--theme1mainbg);
-    --keypadbg : var(--theme1keypadbg);
-    --screenbg : var(--theme1screenbg);
-    /* keys color */
-    --keybg1 : var(--theme1keybg1);
-    --keyshadow1 : var(--theme1keyshadow1);
-    --keybg2 : var(--theme1keybg2);
-    --keyshadow2 : var(--theme1keyshadow2);
-    --keybg3 : var(--theme1keybg3);
-    --keyshadow3 : var(--theme1keyshadow3);
-    /* text colors */
-    --text1 : var(--text1theme1);
-    --text2 : var(--text2theme1);
-    --text3 : var(--text3theme1);
-    --text4 : var(--text4theme1);
 
 }
 
@@ -83,6 +32,54 @@
     margin: 0;
     font-family: 'League Spartan';
     font-weight: 700;
+}
+
+.theme2{
+    /****** theme 2 *****/
+    /* background colors */
+    --mainbg : hsl(0, 0%, 90%);
+    --keypadbg : hsl(0, 5%, 81%);
+    --screenbg : hsl(0, 0%, 93%);
+    /* keys color */
+    --keybg1 : hsl(185, 42%, 37%);
+    --keyshadow1 : hsl(185, 58%, 25%);
+    --keybg2 : hsl(25, 98%, 40%);
+    --keyshadow2 : hsl(25, 99%, 27%);
+    --keybg3 : hsl(45, 7%, 89%);
+    --keyshadow3 : hsl(35, 11%, 61%);
+    /* keys hover */
+    --keybg1hover : hsl(185, 41%, 56%);
+    --keybg2hover : hsl(25, 100%, 61%);
+    --keybg3hover: hsl(0, 0%, 100%);
+    /* text colors */
+    --text1 : hsl(60, 10%, 19%);
+    --text2 : hsl(0, 0%, 100%);
+    --text3 : hsl(60, 10%, 19%);
+    --text4 : hsl(0, 0%, 100%);;
+}
+
+.theme3{
+    /******** theme 3 ******/
+    /* background colors */
+    --mainbg : hsl(268, 75%, 9%);
+    --keypadbg : hsl(268, 71%, 12%);
+    --screenbg : hsl(268, 71%, 12%);
+    /* keys color */
+    --keybg1 : hsl(281, 89%, 26%);
+    --keyshadow1 : hsl(285, 91%, 52%);
+    --keybg2 : hsl(176, 100%, 44%);
+    --keyshadow2 : hsl(177, 92%, 70%);
+    --keybg3 : hsl(268, 47%, 21%);
+    --keyshadow3 : hsl(290, 70%, 36%);
+    /* keys hover */
+    --keybg1hover : hsl(281, 56%, 44%);
+    --keybg2hover : hsl(177, 100%, 79%);
+    --keybg3hover: hsl(268, 54%, 44%);
+    /* text colors */
+    --text1 : hsl(52, 100%, 62%);
+    --text2 : hsl(0, 0%, 100%);
+    --text3 : hsl(52, 100%, 62%);
+    --text4 : hsl(198, 20%, 13%);
 }
 
 body{
@@ -99,7 +96,6 @@ button{
 }
 button:hover{
     cursor: pointer;
-    filter:saturate(0.7);
 }
 
 /************ theme section    *********/
@@ -167,6 +163,10 @@ button:hover{
     height: 19px;
 }
 
+#changetheme button:hover{
+    background-color: var(--keybg2hover);
+}
+
 #btn1{
     margin-left: 3px;
 }
@@ -229,6 +229,11 @@ button:hover{
     width: 90%;
 }
 
+.numbers:hover, .operator:hover{
+    background-color: var(--keybg3hover);
+    border-color: var(--keybg3hover);
+}
+
 #del{
     background-color: var(--keybg1);
     color: var(--text2);
@@ -236,6 +241,11 @@ button:hover{
     box-shadow: 0px 2px 0px var(--keyshadow1);
     width: 90%;
     border-color: var(--keybg1);
+}
+
+#del:hover{
+    background-color: var(--keybg1hover);
+    border-color: var(--keybg1hover);
 }
 
 #reset{
@@ -248,6 +258,11 @@ button:hover{
     border-color: var(--keybg1);
 }
 
+#reset:hover{
+    background-color: var(--keybg1hover);
+    border-color: var(--keybg1hover);
+}
+
 #result{
     grid-column-start: 3;
     grid-column-end: 5;
@@ -257,4 +272,9 @@ button:hover{
     width: 96%;
     box-shadow: 0px 2px 0px var(--keyshadow2);
     border-color: var(--keybg2);
+}
+
+#result:hover{
+    background-color: var(--keybg2hover);
+    border-color: var(--keybg2hover);
 }

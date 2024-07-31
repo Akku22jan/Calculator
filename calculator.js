@@ -14,13 +14,20 @@ window.addEventListener("keydown", () => {
     /***** what happens on pressing the number keys */
     if (key === '1' || key === '2' || key === '3' || key === '4' 
         || key === '5' || key === '6' || key === '7' || key === '8' 
-        || key === '9' || key === '0') {
+        || key === '9' || key === '0' || key === '.') {
             updateExpressionOnNumbers(key);
     }
 
     /**** what happens on pressing operators and decimal point */
-    if(key === '.' || key === '+' || key === '-' || key === '*' || key === '/'){
-        updateExpressionOnOperators(key);
+    if( key === '+' || key === '-' || key === '*' || key === '/'){
+        if(key === '*'){
+            updateExpressionOnOperators(key, '&times;');
+        } else if(key === '/'){
+            updateExpressionOnOperators(key,'&divide;');
+        } else{
+            updateExpressionOnOperators(key, key);
+        }
+        
         
     }
 
@@ -44,12 +51,7 @@ digits.forEach(accessButton);
 
 function accessButton(digit) {
     digit.addEventListener("click", function displayNumber() {
-        if(digit.innerHTML !=='.'){
             updateExpressionOnNumbers(digit.innerHTML);
-
-        } else{
-            updateExpressionOnOperators(digit.innerHTML);
-        } 
     });
 }
 
@@ -61,9 +63,11 @@ function accessOperator(operator) {
     operator.addEventListener("click", function operatorFunction() {
         if(operator.id !== "result"){
             if (operator.id === "multiply") {
-                updateExpressionOnOperators('*');
+                updateExpressionOnOperators('*',operator.innerHTML);
+            } else if(operator.id === 'divide'){
+                updateExpressionOnOperators(operator.innerHTML,'&divide;');
             } else {
-                updateExpressionOnOperators(operator.innerHTML);
+                updateExpressionOnOperators(operator.innerHTML, operator.innerHTML);
             }
         }
         
@@ -94,19 +98,25 @@ del.addEventListener("click", () => {
 
 
 function updateExpressionOnNumbers(keys){
-    if(expression === `${result}`){
-        expression = keys;
-        displayExpression.innerHTML = expression;
+    if(expression === `${result}` || displayExpression.innerHTML==='0'){
+        if(keys !== '.') {
+            expression = keys;
+            displayExpression.innerHTML = keys;
+        } else{
+            expression += keys;
+            displayExpression.innerHTML += keys;
+        }
+        
         displayAns.style.visibility = 'visible';
-        displayAns.innerHTML = `ans = ${result}`;
+        displayAns.innerHTML = `Ans = ${result}`;
 
     } else{
         expression += keys;
-        displayExpression.innerHTML = expression;
+        displayExpression.innerHTML += keys;
     }
 }
 
-function updateExpressionOnOperators(keys){
+function updateExpressionOnOperators(keys,displayKeys){
         expression += keys;
         expression = expression.replace(/\*\-[\*\/\+\-]/,'*-');
         expression = expression.replace(/\/\-[\*\/\+\-]/,'/-');
@@ -116,9 +126,18 @@ function updateExpressionOnOperators(keys){
         expression = expression.replace(/[\+.]\-/ ,'-');
         expression = expression.replace(/\-\-/ ,'+');
 
-        displayExpression.innerHTML = expression;
+        displayExpression.innerHTML += ` ${displayKeys} `;
+        
+        //displayExpression.innerHTML = displayExpression.innerHTML.replace(`/\s\u00d7 \s-\s[+-\u00d7]/u`,` &multiply; -`);
+        //displayExpression.innerHTML = displayExpression.innerHTML.replace(/\/\-[\*\/\+\-]/,'/-');
+        //displayExpression.innerHTML = displayExpression.innerHTML.replace(/[\+\*\-\/.]\*/ ,'*');
+        //displayExpression.innerHTML = displayExpression.innerHTML.replace(/[\+\*\-\/.]\// ,'/');
+        //displayExpression.innerHTML = displayExpression.innerHTML.replace(/[\+\*\-\/.]\+/ ,'+');
+        //displayExpression.innerHTML = displayExpression.innerHTML.replace(/[\+.]\-/ ,'-');
+        //displayExpression.innerHTML = displayExpression.innerHTML.replace(/\-\-/ ,'+');
+
         displayAns.style.visibility = 'visible';
-        displayAns.innerHTML = `ans = ${result}`;
+        displayAns.innerHTML = `Ans = ${result}`;
 }
 
 function evaluateExpression(){
@@ -131,7 +150,7 @@ function evaluateExpression(){
 }
 
 function updateOnDelKey(){
-    displayAns.innerHTML = `ans = ${result}`;
+    displayAns.innerHTML = `Ans = ${result}`;
     let length = expression.length;
     expression = expression.slice(0,length-1);
     displayExpression.innerHTML = expression;
