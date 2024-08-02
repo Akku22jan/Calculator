@@ -194,11 +194,26 @@ button:hover{
     border-radius: 12px;
 }
 
+#displayexpression{
+    transform: translateY(0px);
+    transition: transform 0.2s;
+}
+
+#displayexpression.animate{
+    transform: translateY(20px);
+}
+
 #displayans{
     opacity: 0.5;
     font-size: calc(var(--fontsize)/2);
     margin-bottom: 1rem;
     visibility: hidden;
+    transition: all 0.2s;
+}
+
+#displayans.animate {
+    opacity: 1;
+    font-size: var(--fontsize);
 }
 
 /***** Keypad section *****/

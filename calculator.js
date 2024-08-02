@@ -7,6 +7,7 @@ const del = document.getElementById('del');
 let expression = displayExpression.innerHTML;
 let result = 0;
 
+
 /********    Typing in the calculator through keys */
 window.addEventListener("keydown", () => {
     let key = event.key;
@@ -21,14 +22,8 @@ window.addEventListener("keydown", () => {
     /**** what happens on pressing operators and decimal point */
     if( key === '+' || key === '-' || key === '*' || key === '/'){
         if(key === '*'){
-            updateExpressionOnOperators(key, '&times;');
-        } else if(key === '/'){
-            updateExpressionOnOperators(key,'&divide;');
-        } else{
-            updateExpressionOnOperators(key, key);
+            updateExpressionOnOperators(key);
         }
-        
-        
     }
 
     /**** what happens on pressing = or enter */
@@ -50,7 +45,7 @@ window.addEventListener("keydown", () => {
 digits.forEach(accessButton);
 
 function accessButton(digit) {
-    digit.addEventListener("click", function displayNumber() {
+    digit.addEventListener("click", () => {
             updateExpressionOnNumbers(digit.innerHTML);
     });
 }
@@ -60,18 +55,15 @@ function accessButton(digit) {
 operators.forEach(accessOperator);
 
 function accessOperator(operator) {
-    operator.addEventListener("click", function operatorFunction() {
+    operator.addEventListener("click", () => {
         if(operator.id !== "result"){
             if (operator.id === "multiply") {
-                updateExpressionOnOperators('*',operator.innerHTML);
-            } else if(operator.id === 'divide'){
-                updateExpressionOnOperators(operator.innerHTML,'&divide;');
+                updateExpressionOnOperators('*');
             } else {
-                updateExpressionOnOperators(operator.innerHTML, operator.innerHTML);
+                updateExpressionOnOperators(operator.innerHTML);
             }
         }
         
-
         /* Evaluation of the expression when = is clicked*/
 
         else {
@@ -116,7 +108,7 @@ function updateExpressionOnNumbers(keys){
     }
 }
 
-function updateExpressionOnOperators(keys,displayKeys){
+function updateExpressionOnOperators(keys){
         expression += keys;
         expression = expression.replace(/\*\-[\*\/\+\-]/,'*-');
         expression = expression.replace(/\/\-[\*\/\+\-]/,'/-');
@@ -126,16 +118,7 @@ function updateExpressionOnOperators(keys,displayKeys){
         expression = expression.replace(/[\+.]\-/ ,'-');
         expression = expression.replace(/\-\-/ ,'+');
 
-        displayExpression.innerHTML += ` ${displayKeys} `;
-        
-        //displayExpression.innerHTML = displayExpression.innerHTML.replace(`/\s\u00d7 \s-\s[+-\u00d7]/u`,` &multiply; -`);
-        //displayExpression.innerHTML = displayExpression.innerHTML.replace(/\/\-[\*\/\+\-]/,'/-');
-        //displayExpression.innerHTML = displayExpression.innerHTML.replace(/[\+\*\-\/.]\*/ ,'*');
-        //displayExpression.innerHTML = displayExpression.innerHTML.replace(/[\+\*\-\/.]\// ,'/');
-        //displayExpression.innerHTML = displayExpression.innerHTML.replace(/[\+\*\-\/.]\+/ ,'+');
-        //displayExpression.innerHTML = displayExpression.innerHTML.replace(/[\+.]\-/ ,'-');
-        //displayExpression.innerHTML = displayExpression.innerHTML.replace(/\-\-/ ,'+');
-
+        displayExpression.innerHTML = expression.replaceAll('*', ` &times; `).replaceAll('/', ` &divide; `).replaceAll('+', ` + `).replaceAll('-', ` - `);
         displayAns.style.visibility = 'visible';
         displayAns.innerHTML = `Ans = ${result}`;
 }
@@ -146,6 +129,13 @@ function evaluateExpression(){
         result = func();
         displayAns.innerHTML = displayExpression.innerHTML;
         displayExpression.innerHTML = result;
+        displayAns.classList.add("animate"); /* add the animation class */
+        displayExpression.classList.add("animate"); /* add the animation class */
+        setTimeout(() => {
+            displayAns.classList.remove('animate');
+            displayExpression.classList.remove('animate');
+        }, 200) /* Trigger a reflow to reset the animation */
+        
         expression = `${result}`;
 }
 
@@ -153,9 +143,9 @@ function updateOnDelKey(){
     displayAns.innerHTML = `Ans = ${result}`;
     let length = expression.length;
     expression = expression.slice(0,length-1);
-    displayExpression.innerHTML = expression;
+    displayExpression.innerHTML = expression.replaceAll('*', ` &times; `).replaceAll('/', ` &divide; `).replaceAll('+', ` + `).replaceAll('-', ` - `);
     if(displayExpression.innerHTML === ""){
         displayExpression.innerHTML = '0';
-        expression = '';
+        expression = '0';
     }
 }
